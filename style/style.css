@@ -1,0 +1,276 @@
+@font-face {
+  font-family: "handlee";
+  src: url("../fonts/handlee-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "copystruct";
+  src: url("../fonts/COPYN___-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --header-size: 60px;
+  --font-clr-main: rgb(58, 58, 58);
+  --form-font-size: 15px;
+  --form-title-font-size: 40px;
+  --form-background-clr: rgba(233, 113, 57, 0.589);
+  --animation-duration: 0.2s;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+main {
+  font-family: "copystruct";
+  width: 80vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* gap: 70px; */
+}
+
+.title {
+  display: flex;
+  justify-self: center;
+  height: fit-content;
+  font-size: var(--header-size);
+  /* color: var(--font-clr-main); */
+  margin-top: 35px;
+  user-select: none;
+}
+.book-list {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.4fr 0.6fr 0.6fr 0.4fr;
+  grid-template-rows: auto;
+  font-size: var(--main-font-size);
+  /* padding: 20px; */
+  height: 35px;
+}
+li {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-book {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  height: 40px;
+  width: 150px;
+  border-radius: 2rem;
+  border: 1px solid gray;
+  border: 1px dashed black;
+  background-color: white;
+  color: black;
+  font-family: "copystruct";
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+}
+.add-book:hover,
+.add-book-button:hover,
+.rest-book-form:hover,
+.remove-button:hover {
+  background-color: black;
+  color: white;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.add-book:active,
+.add-book-button:active,
+.rest-book-form:active,
+.remove-button:active {
+  transform: scale(0.9);
+  transition: 0.1s ease-in-out;
+}
+
+.book-form-pop {
+  padding: 30px;
+  flex-direction: column;
+  justify-self: center;
+  position: absolute;
+  top: 0;
+  gap: 30px;
+  border-radius: 10px;
+}
+.book-form-pop::backdrop {
+  background: rgb(0 0 0 / 0.5);
+  opacity: 0;
+}
+.book-form-pop[open]::backdrop {
+  animation: fade-in 0.2s forwards;
+}
+.book-form-pop[open] {
+  animation: fade-in var(--animation-duration) forwards;
+}
+.book-form-pop[closing] {
+  display: block;
+  inset: 0;
+  pointer-events: none;
+  animation: fade-out var(--animation-duration) forwards;
+}
+.book-form-pop[closing]::backdrop {
+  animation: fade-out 0.2s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+input {
+  border: none;
+  font-family: "copystruct";
+  border-bottom: 1px dashed gray;
+  text-align: center;
+}
+input:focus {
+  border-bottom: 1px dashed gray;
+  outline: none;
+  text-align: center;
+}
+.input-window {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--form-font-size);
+}
+input {
+  width: 50%;
+  display: flex;
+}
+.book-form > p {
+  text-align: center;
+  font-size: var(--form-title-font-size);
+  font-weight: 800;
+}
+.icon-close {
+  position: absolute;
+  height: 25px;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+}
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.add-book-button,
+.rest-book-form {
+  background-color: white;
+  border: 1px dashed gray;
+  border-radius: 2rem;
+  height: 40px;
+  width: 60px;
+  font-family: "copystruct";
+  font-size: 0.8rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.read-of-book-display {
+  height: 100%;
+  width: 30px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.read-of-book-display:hover {
+  opacity: 1;
+  transition: 0.2s ease-in-out;
+}
+
+.remove-button {
+  width: 70px;
+  background-color: white;
+  border: 1px dashed gray;
+  border-radius: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: gray;
+  opacity: 0.5;
+}
+
+li > * {
+  height: 15px;
+}
+.book-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.book-content > * {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.4fr 0.6fr 0.6fr 0.4fr;
+  height: fit-content;
+}
+.book-content > * > * {
+  display: flex;
+  justify-content: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+footer {
+  position: absolute;
+  bottom: 20px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.github {
+  height: 2.5vh;
+  transition: 0.15s ease-in-out;
+}
+.github:hover {
+  scale: 1.4;
+  transition: 0.15s ease-in-out;
+}
